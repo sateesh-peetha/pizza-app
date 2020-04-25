@@ -10,7 +10,7 @@ export const pizzaSlice = createSlice({
   },
   reducers: {
     add: (state, action) => {
-      state.order.push({ ...action.payload, quantity: 1 });
+      state.cart.push({ ...action.payload, quantity: 1 });
     },
     setProducts: (state, action) => {
       state.menu = action.payload;
