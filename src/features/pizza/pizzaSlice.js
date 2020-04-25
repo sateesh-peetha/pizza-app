@@ -5,7 +5,7 @@ export const pizzaSlice = createSlice({
   initialState: {
     value: 0,
     menu: [],
-    order: [],
+    cart: [],
     loading: false
   },
   reducers: {
@@ -22,6 +22,8 @@ export const pizzaSlice = createSlice({
   },
 });
 
-export const {  add, setProducts, toggleLoading } = pizzaSlice.actions;
+export const { add, setProducts, toggleLoading } = pizzaSlice.actions;
 export const selectLoading = state => state.pizza.loading;
+export const selectMenu = state => state.pizza.menu;
+export const selectCart = state => state.pizza.cart;
 export default pizzaSlice.reducer;

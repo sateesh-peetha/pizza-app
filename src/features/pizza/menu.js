@@ -4,16 +4,17 @@ import {
   add,
   setProducts,
   selectLoading,
+  selectMenu,
   toggleLoading
 } from './pizzaSlice';
 import { Card, Button } from 'react-bootstrap';
 
 export function Menu() {
   const loading = useSelector(selectLoading);
+  const menu = useSelector(selectMenu);
   const dispatch = useDispatch();
   if (!loading) {
     dispatch(toggleLoading());
-    console.log("came here...")
     const apiResponse = fetch("https://pokeapi.co/api/v2/pokemon").then(
       function (response) {
         if (response.status !== 200) {
@@ -22,14 +23,12 @@ export function Menu() {
           return;
         }
         response.json().then(function (data) {
-          console.log(data);
           dispatch(setProducts(data))
         });
       }
-    )
-      .catch(function (err) {
-        console.log('Fetch Error :-S', err);
-      });
+    ).catch(function (err) {
+      console.log('Fetch Error :-S', err);
+    });
   }
 
   return (
