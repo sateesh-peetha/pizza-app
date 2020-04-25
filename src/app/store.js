@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import pizzaReducer from '../features/pizza/pizzaSlice';
 
 export default configureStore({
   reducer: {
-    counter: counterReducer,
+    pizza: pizzaReducer,
   },
 });
