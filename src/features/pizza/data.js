@@ -244,7 +244,7 @@ export const data = [
       selectedCrustId: 1,
       description: 'A delectable combination of cheese and juicy tomato',
       name: 'Cheese n Tomato',
-      image: 'cheese_and_tomato.png',
+      image: 'cheese_and_tomato.jpg',
       defaultPrice: 0,
       crust: [
         {
