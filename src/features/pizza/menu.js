@@ -7,7 +7,8 @@ import {
   selectMenu,
   toggleLoading
 } from './pizzaSlice';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button ,CardDeck,CardGroup,Container,Col} from 'react-bootstrap';
+import { data } from './data';
 
 export function Menu() {
   const loading = useSelector(selectLoading);
@@ -32,15 +33,26 @@ export function Menu() {
   }
 
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>Pizza</Card.Title>
-        <Card.Text>
-          Pizza Description
+    <Container>
+    <CardGroup> {
+    data.map(item => {
+      return (
+        <Col sm={4}>
+        <Card style={{ width: '18rem' }}>
+          <Card.Img variant="top" src={`./img/${item.image}`} />
+          <Card.Body>
+            <Card.Title>{item.name}</Card.Title>
+            <Card.Text>
+              {item.description}
     </Card.Text>
-        <Button variant="primary">Add to Cart</Button>
-      </Card.Body>
-    </Card>
+            <Button variant="primary">Add to Cart</Button>
+          </Card.Body>
+        </Card>
+        </Col>
+      )
+    })
+  }
+  </CardGroup> 
+  </Container>
   );
 }
