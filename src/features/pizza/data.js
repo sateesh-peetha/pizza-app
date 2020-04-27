@@ -5,7 +5,7 @@ export const data = [
       description: 'A classic delight with 100% Real mozzarella cheese',
       name: 'Margherita',
       image: 'new_margherita_2502.jpg',
-      defaultPrice: 0,
+      defaultPrice: 99,
       crust: [
         {
           sizes: [
@@ -123,7 +123,7 @@ export const data = [
       description: 'Sweet & Juicy Golden corn and 100% real mozzarella cheese in a delectable combination !',
       name: 'Cheese n Corn',
       image: 'new_cheese_n_corn.jpg',
-      defaultPrice: 0,
+      defaultPrice: 165,
       crust: [
         {
           sizes: [
@@ -245,7 +245,7 @@ export const data = [
       description: 'A delectable combination of cheese and juicy tomato',
       name: 'Cheese n Tomato',
       image: 'cheese_and_tomato.jpg',
-      defaultPrice: 0,
+      defaultPrice: 165,
       crust: [
         {
           sizes: [
@@ -367,7 +367,7 @@ export const data = [
       description: 'Tangy & spicy achari flavours on a super cheesy onion pizza- as desi as it gets!',
       name: 'Achari Do Pyaza',
       image: 'updated_achari_do_pyaza.jpg',
-      defaultPrice: 0,
+      defaultPrice: 165,
       crust: [
         {
           sizes: [
@@ -488,7 +488,7 @@ export const data = [
       description: 'A classic delight loaded with extra 100% real mozzarella cheese',
       name: 'Double Cheese Margherita',
       image: 'double_cheese_margherita_2502.jpg',
-      defaultPrice: 0,
+      defaultPrice: 185,
       crust: [
         {
           sizes: [
@@ -606,7 +606,7 @@ export const data = [
       description: 'Delectable combination of onion & capsicum, a veggie lovers pick',
       name: 'Fresh Veggie',
       image: 'new_fresh_veggie.jpg',
-      defaultPrice: 0,
+      defaultPrice: 185,
       crust: [
         {
           sizes: [
@@ -728,7 +728,7 @@ export const data = [
       description: 'Flavorful twist of spicy makhani sauce topped with paneer & capsicum',
       name: 'Paneer Makhani',
       image: 'updated_paneer_makhani.jpg',
-      defaultPrice: 0,
+      defaultPrice: 215,
       crust: [
         {
           sizes: [
@@ -839,6 +839,250 @@ export const data = [
       defaultCrustPrice: 494,
       code: 'PIZ0127',
       sizeCode: 'Ew',
+      sortOrder: 0,
+      addTopngs: [],
+      remTopngs: [],
+      repTopngs: []
+    },
+    {
+      id: 4084,
+      selectedCrustId: 1,
+      description: 'A classic favourite with pepper barbeque chicken & onion',
+      name: 'Pepper Barbecue & Onion',
+      image: 'new_chicken_onion_barbeque.jpg',
+      defaultPrice: 0,
+      crust: [
+        {
+          sizes: [
+            {
+              price: 215,
+              description: 'Serves 1',
+              name: 'Regular',
+              sizeId: 6,
+              code: 'BHT07',
+              uniqGeneratedPriceId: '6#1#4084',
+              uniqGeneratedToppingsPriceId: {
+                '65': '65#6'
+              }
+            },
+            {
+              price: 395,
+              description: 'Serves 2',
+              name: 'Medium',
+              sizeId: 7,
+              code: 'BHT95',
+              uniqGeneratedPriceId: '7#1#4084',
+              uniqGeneratedToppingsPriceId: {
+                '65': '65#7'
+              }
+            }
+          ],
+          crustId: 1,
+          name: 'New Hand Tossed',
+          code: 'BHT'
+        },
+        {
+          sizes: [
+            {
+              price: 445,
+              description: 'Serves 2',
+              name: 'Medium',
+              sizeId: 7,
+              code: 'TC95',
+              uniqGeneratedPriceId: '7#3#4084',
+              uniqGeneratedToppingsPriceId: {
+                '65': '65#7'
+              }
+            }
+          ],
+          crustId: 3,
+          name: 'Wheat Thin Crust',
+          code: 'WTC'
+        },
+        {
+          sizes: [
+            {
+              price: 290,
+              description: 'Serves 1',
+              name: 'Regular',
+              sizeId: 6,
+              code: 'CB07',
+              uniqGeneratedPriceId: '6#115#4084',
+              uniqGeneratedToppingsPriceId: {
+                '65': '65#6'
+              }
+            },
+            {
+              price: 494,
+              description: 'Serves 2',
+              name: 'Medium',
+              sizeId: 7,
+              code: 'BU95',
+              uniqGeneratedPriceId: '7#115#4084',
+              uniqGeneratedToppingsPriceId: {
+                '65': '65#7'
+              }
+            }
+          ],
+          crustId: 115,
+          name: 'Cheese Burst',
+          code: 'CB'
+        },
+        {
+          sizes: [
+            {
+              price: 215,
+              description: 'Serves 1',
+              name: 'Regular',
+              sizeId: 6,
+              code: 'HT07',
+              uniqGeneratedPriceId: '6#391#4084',
+              uniqGeneratedToppingsPriceId: {
+                '65': '65#6'
+              }
+            }
+          ],
+          crustId: 391,
+          name: 'Classic Hand Tossed',
+          code: 'CHT'
+        }
+      ],
+      defaultToppings: [
+        61,
+        393
+      ],
+      selectedSizeId: 7,
+      isCustomizable: true,
+      isReplaceable: false,
+      allowedToppings: [
+        65
+      ],
+      productType: 1,
+      defaultCrustPrice: 494,
+      code: 'PIZ5120',
+      sizeCode: 'Ek',
+      sortOrder: 0,
+      addTopngs: [],
+      remTopngs: [],
+      repTopngs: []
+    },
+    {
+      id: 4069,
+      selectedCrustId: 1,
+      description: 'Double pepper barbecue chicken, golden corn and extra cheese, true delight',
+      name: 'Chicken Golden Delight',
+      image: 'new_chicken_golden_delight.jpg',
+      defaultPrice: 0,
+      crust: [
+        {
+          sizes: [
+            {
+              price: 235,
+              description: 'Serves 1',
+              name: 'Regular',
+              sizeId: 6,
+              code: 'BHT07',
+              uniqGeneratedPriceId: '6#1#4069',
+              uniqGeneratedToppingsPriceId: {
+                '65': '65#6'
+              }
+            },
+            {
+              price: 450,
+              description: 'Serves 2',
+              name: 'Medium',
+              sizeId: 7,
+              code: 'BHT95',
+              uniqGeneratedPriceId: '7#1#4069',
+              uniqGeneratedToppingsPriceId: {
+                '65': '65#7'
+              }
+            }
+          ],
+          crustId: 1,
+          name: 'New Hand Tossed',
+          code: 'BHT'
+        },
+        {
+          sizes: [
+            {
+              price: 500,
+              description: 'Serves 2',
+              name: 'Medium',
+              sizeId: 7,
+              code: 'TC95',
+              uniqGeneratedPriceId: '7#3#4069',
+              uniqGeneratedToppingsPriceId: {
+                '65': '65#7'
+              }
+            }
+          ],
+          crustId: 3,
+          name: 'Wheat Thin Crust',
+          code: 'WTC'
+        },
+        {
+          sizes: [
+            {
+              price: 310,
+              description: 'Serves 1',
+              name: 'Regular',
+              sizeId: 6,
+              code: 'CB07',
+              uniqGeneratedPriceId: '6#115#4069',
+              uniqGeneratedToppingsPriceId: {
+                '65': '65#6'
+              }
+            },
+            {
+              price: 549,
+              description: 'Serves 2',
+              name: 'Medium',
+              sizeId: 7,
+              code: 'BU95',
+              uniqGeneratedPriceId: '7#115#4069',
+              uniqGeneratedToppingsPriceId: {
+                '65': '65#7'
+              }
+            }
+          ],
+          crustId: 115,
+          name: 'Cheese Burst',
+          code: 'CB'
+        },
+        {
+          sizes: [
+            {
+              price: 235,
+              description: 'Serves 1',
+              name: 'Regular',
+              sizeId: 6,
+              code: 'HT07',
+              uniqGeneratedPriceId: '6#391#4069',
+              uniqGeneratedToppingsPriceId: {
+                '65': '65#6'
+              }
+            }
+          ],
+          crustId: 391,
+          name: 'Classic Hand Tossed',
+          code: 'CHT'
+        }
+      ],
+      defaultToppings: [
+        70,
+        75
+      ],
+      selectedSizeId: 7,
+      isCustomizable: true,
+      isReplaceable: false,
+      allowedToppings: [
+        65
+      ],
+      productType: 1,
+      defaultCrustPrice: 549,
+      code: 'PIZ5123',
+      sizeCode: 'Gd',
       sortOrder: 0,
       addTopngs: [],
       remTopngs: [],
