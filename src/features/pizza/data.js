@@ -5,12 +5,12 @@ export const data = [
     description: 'A classic delight with 100% Real mozzarella cheese',
     name: 'Margherita',
     image: 'new_margherita_2502.jpg',
-    defaultPrice: 99,
+    defaultPrice: 9,
     crust: [
       {
         sizes: [
           {
-            price: 99,
+            price: 9,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -21,7 +21,7 @@ export const data = [
             }
           },
           {
-            price: 199,
+            price: 19,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -39,7 +39,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 249,
+            price: 24,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -57,7 +57,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 174,
+            price: 17,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -68,7 +68,7 @@ export const data = [
             }
           },
           {
-            price: 298,
+            price: 29,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -86,7 +86,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 99,
+            price: 9,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -97,7 +97,7 @@ export const data = [
             }
           }
         ],
-        crustId: 391,
+        crustId: 39,
         name: 'Classic Hand Tossed',
         code: 'CHT'
       }
@@ -123,12 +123,12 @@ export const data = [
     description: 'Sweet & Juicy Golden corn and 100% real mozzarella cheese in a delectable combination !',
     name: 'Cheese n Corn',
     image: 'new_cheese_n_corn.jpg',
-    defaultPrice: 165,
+    defaultPrice: 16,
     crust: [
       {
         sizes: [
           {
-            price: 165,
+            price: 16,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -139,7 +139,7 @@ export const data = [
             }
           },
           {
-            price: 305,
+            price: 30,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -157,7 +157,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 355,
+            price: 35,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -175,7 +175,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 240,
+            price: 24,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -186,7 +186,7 @@ export const data = [
             }
           },
           {
-            price: 404,
+            price: 40,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -197,14 +197,14 @@ export const data = [
             }
           }
         ],
-        crustId: 115,
+        crustId: 11,
         name: 'Cheese Burst',
         code: 'CB'
       },
       {
         sizes: [
           {
-            price: 165,
+            price: 16,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -215,7 +215,7 @@ export const data = [
             }
           }
         ],
-        crustId: 391,
+        crustId: 39,
         name: 'Classic Hand Tossed',
         code: 'CHT'
       }
@@ -245,12 +245,12 @@ export const data = [
     description: 'A delectable combination of cheese and juicy tomato',
     name: 'Cheese n Tomato',
     image: 'cheese_and_tomato.jpg',
-    defaultPrice: 165,
+    defaultPrice: 16,
     crust: [
       {
         sizes: [
           {
-            price: 165,
+            price: 16,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -261,7 +261,7 @@ export const data = [
             }
           },
           {
-            price: 305,
+            price: 30,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -279,7 +279,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 355,
+            price: 35,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -297,7 +297,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 240,
+            price: 24,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -308,7 +308,7 @@ export const data = [
             }
           },
           {
-            price: 404,
+            price: 40,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -326,7 +326,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 165,
+            price: 16,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -367,12 +367,12 @@ export const data = [
     description: 'Tangy & spicy achari flavours on a super cheesy onion pizza- as desi as it gets!',
     name: 'Achari Do Pyaza',
     image: 'updated_achari_do_pyaza.jpg',
-    defaultPrice: 165,
+    defaultPrice: 16,
     crust: [
       {
         sizes: [
           {
-            price: 165,
+            price: 16,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -383,7 +383,7 @@ export const data = [
             }
           },
           {
-            price: 305,
+            price: 30,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -401,7 +401,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 355,
+            price: 35,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -419,7 +419,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 240,
+            price: 24,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -430,7 +430,7 @@ export const data = [
             }
           },
           {
-            price: 404,
+            price: 40,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -448,7 +448,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 165,
+            price: 16,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -488,7 +488,7 @@ export const data = [
     description: 'A classic delight loaded with extra 100% real mozzarella cheese',
     name: 'Double Cheese Margherita',
     image: 'double_cheese_margherita_2502.jpg',
-    defaultPrice: 185,
+    defaultPrice: 18,
     crust: [
       {
         sizes: [
@@ -504,7 +504,7 @@ export const data = [
             }
           },
           {
-            price: 335,
+            price: 33,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -522,7 +522,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 385,
+            price: 38,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -540,7 +540,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 260,
+            price: 26,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -551,7 +551,7 @@ export const data = [
             }
           },
           {
-            price: 434,
+            price: 43,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -569,7 +569,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 185,
+            price: 18,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -580,7 +580,7 @@ export const data = [
             }
           }
         ],
-        crustId: 391,
+        crustId: 39,
         name: 'Classic Hand Tossed',
         code: 'CHT'
       }
@@ -606,12 +606,12 @@ export const data = [
     description: 'Delectable combination of onion & capsicum, a veggie lovers pick',
     name: 'Fresh Veggie',
     image: 'new_fresh_veggie.jpg',
-    defaultPrice: 185,
+    defaultPrice: 18,
     crust: [
       {
         sizes: [
           {
-            price: 185,
+            price: 18,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -622,7 +622,7 @@ export const data = [
             }
           },
           {
-            price: 335,
+            price: 33,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -640,7 +640,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 385,
+            price: 38,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -658,7 +658,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 260,
+            price: 26,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -669,7 +669,7 @@ export const data = [
             }
           },
           {
-            price: 434,
+            price: 43,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -687,7 +687,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 185,
+            price: 18,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -728,12 +728,12 @@ export const data = [
     description: 'Flavorful twist of spicy makhani sauce topped with paneer & capsicum',
     name: 'Paneer Makhani',
     image: 'updated_paneer_makhani.jpg',
-    defaultPrice: 215,
+    defaultPrice: 21,
     crust: [
       {
         sizes: [
           {
-            price: 215,
+            price: 21,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -744,7 +744,7 @@ export const data = [
             }
           },
           {
-            price: 395,
+            price: 39,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -762,7 +762,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 445,
+            price: 44,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -780,7 +780,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 290,
+            price: 29,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -791,7 +791,7 @@ export const data = [
             }
           },
           {
-            price: 494,
+            price: 49,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -809,7 +809,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 215,
+            price: 21,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -850,12 +850,12 @@ export const data = [
     description: 'A classic favourite with pepper barbeque chicken & onion',
     name: 'Pepper Barbecue & Onion',
     image: 'new_chicken_onion_barbeque.jpg',
-    defaultPrice: 0,
+    defaultPrice: 21,
     crust: [
       {
         sizes: [
           {
-            price: 215,
+            price: 21,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -866,7 +866,7 @@ export const data = [
             }
           },
           {
-            price: 395,
+            price: 39,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -884,7 +884,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 445,
+            price: 44,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -902,7 +902,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 290,
+            price: 29,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -913,7 +913,7 @@ export const data = [
             }
           },
           {
-            price: 494,
+            price: 49,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -931,7 +931,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 215,
+            price: 21,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -972,12 +972,12 @@ export const data = [
     description: 'Double pepper barbecue chicken, golden corn and extra cheese, true delight',
     name: 'Chicken Golden Delight',
     image: 'new_chicken_golden_delight.jpg',
-    defaultPrice: 0,
+    defaultPrice: 23,
     crust: [
       {
         sizes: [
           {
-            price: 235,
+            price: 23,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -988,7 +988,7 @@ export const data = [
             }
           },
           {
-            price: 450,
+            price: 45,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -1006,7 +1006,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 500,
+            price: 50,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -1024,7 +1024,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 310,
+            price: 31,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,
@@ -1035,7 +1035,7 @@ export const data = [
             }
           },
           {
-            price: 549,
+            price: 54,
             description: 'Serves 2',
             name: 'Medium',
             sizeId: 7,
@@ -1053,7 +1053,7 @@ export const data = [
       {
         sizes: [
           {
-            price: 235,
+            price: 23,
             description: 'Serves 1',
             name: 'Regular',
             sizeId: 6,

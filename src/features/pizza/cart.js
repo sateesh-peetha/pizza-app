@@ -169,10 +169,10 @@ export function Cart() {
                                     <Card.Body>
                                         <Card.Title>
                                             <Row>
-                                                <Col align="left" sm={7}>
+                                                <Col align="left" sm={8}>
                                                     Sub Total
                       </Col>
-                                                <Col align="right" sm={5}>
+                                                <Col align="right" sm={4}>
                                                     {currencySymbol + Math.round(subTotal * currencyFactor)}
                                                 </Col>
                                             </Row>
@@ -180,10 +180,10 @@ export function Cart() {
                                         </Card.Title>
                                         <Card.Title>
                                             <Row>
-                                                <Col align="left" sm={7}>
+                                                <Col align="left" sm={8}>
                                                     Delivery Fee
                       </Col>
-                                                <Col align="right" sm={5}>
+                                                <Col align="right" sm={4}>
                                                     {currencySymbol + Math.round(10)}
                                                 </Col>
                                             </Row>
@@ -191,10 +191,10 @@ export function Cart() {
                                         </Card.Title>
                                         <Card.Title>
                                             <Row>
-                                                <Col align="left" sm={7}>
-                                                    Total
+                                                <Col align="left" sm={8}>
+                                                   Grand Total
                       </Col>
-                                                <Col align="right" sm={5}>
+                                                <Col align="right" sm={4}>
                                                     {currencySymbol + (Math.round(subTotal * currencyFactor) + Math.round(10))}
                                                 </Col>
                                             </Row>
