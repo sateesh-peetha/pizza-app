@@ -10,7 +10,7 @@ import {
   increaseQuantity,
   decreaseQuantity
 } from './pizzaSlice';
-import { Card, Button, CardDeck, CardGroup,  Container, Col, Row, ButtonGroup, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Card, Button, CardDeck, CardGroup, Container, Col, Row, ButtonGroup, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { data } from './data';
 
 export function Menu() {
@@ -60,12 +60,12 @@ export function Menu() {
                           <div align="right">
                             {cart.find(order => order.id === item.id) && cart.find(order => order.id === item.id).quantity > 0 ?
                               <ButtonGroup aria-label="Basic example" >
-                                <Button variant="secondary" onClick={() => dispatch(decreaseQuantity(item.id))}>-</Button>
-                                <Button variant="secondary">{cart.find(order => order.id === item.id).quantity}</Button>
-                                <Button variant="secondary" onClick={() => dispatch(increaseQuantity(item.id))}>+</Button>
+                                <Button size="sm" variant="link" onClick={() => dispatch(decreaseQuantity(item.id))}>-</Button>
+                                <Button size="sm" variant="light">{cart.find(order => order.id === item.id).quantity}</Button>
+                                <Button size="sm" variant="link" onClick={() => dispatch(increaseQuantity(item.id))}>+</Button>
                               </ButtonGroup>
                               :
-                              <Button variant="primary" onClick={() => dispatch(add(item.id))}>Add to Cart</Button>
+                              <Button size="sm" variant="link" onClick={() => dispatch(add(item.id))}>Add to Cart</Button>
                             }
                           </div>
                         </Card.Body>
@@ -79,33 +79,36 @@ export function Menu() {
 
           </CardDeck>
         </Col>
-        <Col sm={4}>
+        <Col sm={4} style={{ maxHeight: "400px" }}>
           <Card style={{ width: '15rem', height: "100%" }} >
             <ListGroup className="list-group-flush" style={{ paddingTop: "0px" }}>
               {
                 cart.map(item => {
                   return (
                     <div key={item.id}>
-                      <ListGroupItem>
+                      <ListGroupItem style={{ maxHeight: "300px" }}>
                         <Row>
                           <Col sm={3}>
                             <Card.Img variant="left" src={`./img/${item.image}`} width="50px" height="50px" />
                           </Col>
-                          <Col sm={9}>
-                              <h6 style={{ textAlign: "left" }}>{item.name}</h6>
-                              <p style={{ textAlign: "left", fontSize: "10px", fontColor: "grey" }} >{item.description}</p>
-                            <div align="right">
-                              {cart.find(order => order.id === item.id) && cart.find(order => order.id === item.id).quantity > 0 ?
-                                <ButtonGroup aria-label="Basic example" >
-                                  <Button variant="secondary" onClick={() => dispatch(decreaseQuantity(item.id))}>-</Button>
-                                  <Button variant="secondary">{cart.find(order => order.id === item.id).quantity}</Button>
-                                  <Button variant="secondary" onClick={() => dispatch(increaseQuantity(item.id))}>+</Button>
-                                </ButtonGroup>
-                                :
-                                <Button variant="primary" onClick={() => dispatch(add(item.id))}>Add to Cart</Button>
-                              }
-                            </div>
+                          <Col sm={9} style={{ marginTop: "-3px" }}>
+                            <h6 style={{ textAlign: "left" }}>{item.name}</h6>
+                            <p style={{ textAlign: "left", fontSize: "10px", fontColor: "grey" }} >{item.description}</p>
+
                           </Col>
+                        </Row>
+                        <Row>
+                          <div align="left" style={{ marginTop: "-10px" }}>
+                            {cart.find(order => order.id === item.id) && cart.find(order => order.id === item.id).quantity > 0 ?
+                              <ButtonGroup aria-label="Quantity" >
+                                <Button size="sm" variant="link" onClick={() => dispatch(decreaseQuantity(item.id))}>-</Button>
+                                <Button size="sm" variant="light">{cart.find(order => order.id === item.id).quantity}</Button>
+                                <Button size="sm" variant="link" onClick={() => dispatch(increaseQuantity(item.id))}>+</Button>
+                              </ButtonGroup>
+                              :
+                              <Button size="sm" variant="link" onClick={() => dispatch(add(item.id))}>Add to Cart</Button>
+                            }
+                          </div>
                         </Row>
                       </ListGroupItem>
                     </div>
