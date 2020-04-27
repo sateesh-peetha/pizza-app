@@ -76,7 +76,7 @@ export function Cart() {
                             {cart.length === 0 ?
                                 <div align="center" style={{ paddingTop: "50px" }}>
                                     <h6>YOUR CART IS EMPTY </h6>
-                                    <p>Please add some items from the menu. </p>
+                                    <p><a href="#menu">Please add some items from the menu. </a></p>
                                 </div> : <div></div>
                             }
                             {
@@ -88,7 +88,7 @@ export function Cart() {
                                                     <Col sm={3}>
                                                         <Card.Img variant="left" src={`./img/${item.image}`} width="150px" height="90px" />
                                                     </Col>
-                                                    <Col sm={6} style={{ marginTop: "-3px" ,padding:0}}>
+                                                    <Col sm={6} style={{ marginTop: "-3px", padding: 0 }}>
                                                         <h5 style={{ textAlign: "left" }}>{item.name}</h5>
                                                         <p style={{ textAlign: "left", fontSize: "14px", fontColor: "grey", marginTop: "-7px" }} >{item.description}</p>
                                                         <p style={{ textAlign: "left", fontSize: "14px", fontColor: "grey", marginTop: "-9px" }}> <b>{item.crustSize} | {item.crustName}</b></p>
