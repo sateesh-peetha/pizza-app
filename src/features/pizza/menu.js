@@ -80,9 +80,9 @@ export function Menu() {
                     <div key={item.id}>
                       <Card style={{ width: '14rem', height: "100%" }} >
                         <Card.Img variant="top" src={`./img/${item.image}`} />
-                        <Card.Body>
-                          <Card.Title style={{ textAlign: "left" }}>{item.name} </Card.Title>
-                          <Card.Text style={{ textAlign: "left", fontSize: "12px", fontColor: "grey" }} >{item.description}</Card.Text>
+                        <Card.Body style={{paddingBottom:"3px",marginBottom:"5px"}}>
+                          <Card.Title style={{ textAlign: "left" ,fontSize:"14px" }}>{item.name} </Card.Title>
+                          <Card.Text style={{ textAlign: "left", fontSize: "12px", fontColor: "grey",height:"62px" }} >{item.description}</Card.Text>
                           <Row style={{ marginTop: "-20px" }}>
                             <Col>
                               <label style={{ fontSize: "12px" }}><b>Crust</b></label>
@@ -93,7 +93,7 @@ export function Menu() {
                           </Row>
                           <Row >
                             <Col>
-                              <div style={{ width: '80px' }}>
+                              <div style={{ width: '90px' }}>
                                 <Select
                                   styles={selectStyle}
                                   placeholder="select" align="left"
@@ -134,8 +134,8 @@ export function Menu() {
                               </Select>
                             </Col>
                           </Row>
-
-                          <Row>
+                          <hr style={{ padding: "0px", margin: "0px", paddingBottom:"10px" }}></hr>
+                          <Row >
                             <Col sm="5">
                               <div align="left" style={{ marginTop: "3px" }}>
                                 {currencySymbol + Math.round(item.defaultPrice * currencyFactor)}

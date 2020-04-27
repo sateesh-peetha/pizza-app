@@ -8,7 +8,7 @@ export
             marginTop: -11,
             marginLeft:"-15px",
             fontSize: 8,
-            borderBottom: '1px dotted grey',
+           
             // This line disable the blue border
             boxShadow: "none"
         }),
