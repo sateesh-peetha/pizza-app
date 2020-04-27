@@ -115,6 +115,10 @@ export function Menu() {
                               <Select
                                 styles={selectStyle}
                                 placeholder="select" align="left"
+                                value={{
+                                  label: item.crust[item.selectedCrustIndex || 0].sizes[0].name
+                                  , value: 0
+                                }}
                                 defaultValue={{
                                   label: item.crust[item.selectedCrustIndex || 0].sizes[0].name
                                   , value: 0
