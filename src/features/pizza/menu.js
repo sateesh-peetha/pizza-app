@@ -23,7 +23,6 @@ import {
   Container, Col, Row, ButtonGroup, ListGroup, ListGroupItem,
   Form, Nav
 } from 'react-bootstrap';
-import { data } from './data';
 
 import { currencySelectStyle, selectStyle } from './styles';
 
@@ -39,14 +38,14 @@ export function Menu() {
   const dispatch = useDispatch();
   if (!loading) {
     dispatch(toggleLoading());
-    const apiResponse = fetch("https://pokeapi.co/api/v2/pokemon").then(
+    const apiResponse = fetch("https://wuk2cfdbo8.execute-api.eu-central-1.amazonaws.com/v1/get-menu").then(
       function (response) {
         if (response.status !== 200) {
           console.log('Looks like there was a problem. Status Code: ' +
             response.status);
           return;
         }
-        response.json().then(function (datta) {
+        response.json().then(function (data) {
           dispatch(setProducts(data))
         });
       }
