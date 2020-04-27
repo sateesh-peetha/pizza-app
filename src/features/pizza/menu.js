@@ -80,9 +80,9 @@ export function Menu() {
                     <div key={item.id}>
                       <Card style={{ width: '14rem', height: "100%" }} >
                         <Card.Img variant="top" src={`./img/${item.image}`} />
-                        <Card.Body style={{paddingBottom:"3px",marginBottom:"5px"}}>
-                          <Card.Title style={{ textAlign: "left" ,fontSize:"14px" }}>{item.name} </Card.Title>
-                          <Card.Text style={{ textAlign: "left", fontSize: "12px", fontColor: "grey",height:"62px" }} >{item.description}</Card.Text>
+                        <Card.Body style={{ paddingBottom: "3px", marginBottom: "5px" }}>
+                          <Card.Title style={{ textAlign: "left", fontSize: "14px" }}>{item.name} </Card.Title>
+                          <Card.Text style={{ textAlign: "left", fontSize: "12px", fontColor: "grey", height: "62px" }} >{item.description}</Card.Text>
                           <Row style={{ marginTop: "-20px" }}>
                             <Col>
                               <label style={{ fontSize: "12px" }}><b>Crust</b></label>
@@ -134,7 +134,7 @@ export function Menu() {
                               </Select>
                             </Col>
                           </Row>
-                          <hr style={{ padding: "0px", margin: "0px", paddingBottom:"10px" }}></hr>
+                          <hr style={{ padding: "0px", margin: "0px", paddingBottom: "10px" }}></hr>
                           <Row >
                             <Col sm="5">
                               <div align="left" style={{ marginTop: "3px" }}>
@@ -261,6 +261,13 @@ export function Menu() {
                         {currencySymbol + Math.round(subTotal * currencyFactor)}
                       </Col>
                     </Row>
+
+                  </Card.Title>
+                  <Card.Title>
+                    <Button variant="light" block>
+                      <a href="#/cart">Checkout</a>
+                    </Button>
+
 
                   </Card.Title>
                 </Card.Body> : ""
