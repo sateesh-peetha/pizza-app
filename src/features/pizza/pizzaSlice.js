@@ -22,6 +22,7 @@ export const pizzaSlice = createSlice({
         , price: item[0].crust[crustIndex].sizes[0].price
         , crustName: item[0].crust[crustIndex].name
         , crustSize: item[0].crust[crustIndex].sizes[0].name
+        , selectedCrustIndex: crustIndex
       });
 
     },
@@ -44,7 +45,7 @@ export const pizzaSlice = createSlice({
         state.cart[id].quantity = state.cart[id].quantity - 1;
       }
       if (state.cart[id] && state.cart[id].quantity === 0) {
-        state.cart = state.cart.filter(item => item.id != action.payload)
+        state.cart = state.cart.filter(item => item.id !== action.payload)
       }
     },
     selectCrust: (state, action) => {
@@ -54,6 +55,7 @@ export const pizzaSlice = createSlice({
       let crustIndex = state.menu[menuId].crust.findIndex(ele => ele.crustId === action.payload.value)
       state.menu[menuId] = {
         ...state.menu[menuId], selectedCrustId: action.payload.value,
+        selectedCrustIndex: crustIndex,
         defaultPrice: state.menu[menuId].crust[crustIndex].sizes[0].price,
       };
       if (cartId !== -1) {
@@ -65,12 +67,30 @@ export const pizzaSlice = createSlice({
           crustSize: state.menu[menuId].crust[crustIndex].sizes[0].name
         };
       }
+    },
+    selectSize: (state, action) => {
+
+      let cartId = state.cart.findIndex(ele => ele.id === action.payload.item);
+      let menuId = state.menu.findIndex(ele => ele.id === action.payload.item);
+      const selectedCrustIndex = state.menu[menuId].selectedCrustIndex || 0;
+      state.menu[menuId] = {
+        ...state.menu[menuId],
+        defaultPrice: state.menu[menuId].crust[selectedCrustIndex].sizes[action.payload.value].price,
+      };
+      if (cartId !== -1) {
+        // crustIndex = state.cart[cartId].crust.findIndex(ele => ele.crustId === action.payload.value)
+        state.cart[cartId] = {
+          ...state.cart[cartId],
+          defaultPrice: state.menu[menuId].crust[selectedCrustIndex].sizes[action.payload.value].price,
+          crustSize: state.menu[menuId].crust[selectedCrustIndex].sizes[action.payload.value].name
+        };
+      }
     }
   },
 });
 
 export const { add, setProducts, toggleLoading, increaseQuantity, decreaseQuantity
-  , selectCrust } = pizzaSlice.actions;
+  , selectCrust, selectSize } = pizzaSlice.actions;
 export const selectLoading = state => state.pizza.loading;
 export const selectMenu = state => state.pizza.menu;
 export const selectCart = state => state.pizza.cart;

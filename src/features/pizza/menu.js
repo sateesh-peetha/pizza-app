@@ -12,7 +12,8 @@ import {
   decreaseQuantity,
   selectCurrencySymbol,
   selectCurrencyFactor,
-  selectCrust
+  selectCrust,
+  selectSize
 } from './pizzaSlice';
 import {
   Card, Button, CardDeck, CardGroup, Dropdown, FormControl,
@@ -52,6 +53,7 @@ export function Menu() {
       ...base,
       border: 0,
       padding: 0,
+      margin: 0,
       marginTop: -11,
       fontSize: 11,
       borderBottom: '1px dotted grey',
@@ -68,6 +70,9 @@ export function Menu() {
 
   const handleChange = (selectedOption) => {
     dispatch(selectCrust(selectedOption));
+  };
+  const sizeHandleChange = (selectedOption) => {
+    dispatch(selectSize(selectedOption));
   };
 
   return (
@@ -86,12 +91,16 @@ export function Menu() {
                           <Card.Title style={{ textAlign: "left" }}>{item.name} </Card.Title>
                           <Card.Text style={{ textAlign: "left", fontSize: "12px", fontColor: "grey" }} >{item.description}</Card.Text>
 
-                          <Row>
+                          <Row style={{ marginTop: "-20px" }}>
                             <Col>
-                              <label style={{ fontSize: "12px" }}>Select Crust</label>
+                              <label style={{ fontSize: "12px" }}><b>Select Crust</b></label>
                               <Select
                                 styles={selectStyle}
                                 placeholder="select" align="left"
+                                defaultValue={{
+                                  label: item.crust[0].name
+                                  , value: item.crust[0].crustId
+                                }}
                                 onChange={(e) => handleChange({ ...e, item: item.id })}
                                 options={
                                   item.crust.map(crust => {
@@ -99,11 +108,26 @@ export function Menu() {
                                   })
                                 }
                               >
-
                               </Select>
                             </Col>
                             <Col>
+                              <label style={{ fontSize: "12px" }}><b>Select Size</b></label>
+                              <Select
+                                styles={selectStyle}
+                                placeholder="select" align="left"
+                                defaultValue={{
+                                  label: item.crust[item.selectedCrustIndex || 0].sizes[0].name
+                                  , value: 0
+                                }}
+                                onChange={(e) => sizeHandleChange({ ...e, item: item.id })}
+                                options={
+                                  item.crust[item.crust.findIndex(ele => ele.crustId === item.selectedCrustId)].sizes.map((size, index) => {
+                                    return { label: size.name, value: index }
+                                  })
+                                }
+                              >
 
+                              </Select>
                             </Col>
                           </Row>
 
@@ -118,7 +142,7 @@ export function Menu() {
                                 {cart.find(order => order.id === item.id) && cart.find(order => order.id === item.id).quantity > 0 ?
                                   <ButtonGroup aria-label="Basic example" >
                                     <Button size="sm" variant="link" onClick={() => dispatch(decreaseQuantity(item.id))}>-</Button>
-                                    <Button size="sm" variant="light">{cart.find(order => order.id === item.id).quantity}</Button>
+                                    <Button size="sm" disabled variant="light">{cart.find(order => order.id === item.id).quantity}</Button>
                                     <Button size="sm" variant="link" onClick={() => dispatch(increaseQuantity(item.id))}>+</Button>
                                   </ButtonGroup>
                                   :
@@ -168,11 +192,11 @@ export function Menu() {
                               {cart.find(order => order.id === item.id) && cart.find(order => order.id === item.id).quantity > 0 ?
                                 <ButtonGroup aria-label="Quantity" >
                                   <Button size="sm" variant="link" onClick={() => dispatch(decreaseQuantity(item.id))}>-</Button>
-                                  <Button size="sm" variant="light">{cart.find(order => order.id === item.id).quantity}</Button>
+                                  <Button size="sm" disabled variant="light">{cart.find(order => order.id === item.id).quantity}</Button>
                                   <Button size="sm" variant="link" onClick={() => dispatch(increaseQuantity(item.id))}>+</Button>
                                 </ButtonGroup>
                                 :
-                                <Button size="sm" variant="link" onClick={() => dispatch(add(item.id))}>Add to Cart</Button>
+                                ""
                               }
                             </div>
                           </Col>
