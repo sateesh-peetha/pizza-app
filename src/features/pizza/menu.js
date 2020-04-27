@@ -93,7 +93,7 @@ export function Menu() {
                           </Col>
                           <Col sm={9} style={{ marginTop: "-3px" }}>
                             <h6 style={{ textAlign: "left" }}>{item.name}</h6>
-                            <p style={{ textAlign: "left", fontSize: "10px", fontColor: "grey" }} >{item.description}</p>
+                            <p style={{ textAlign: "left", fontSize: "10px", fontColor: "grey" ,marginTop: "-7px"}} >{item.description}</p>
 
                           </Col>
                         </Row>
