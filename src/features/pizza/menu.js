@@ -13,14 +13,19 @@ import {
   selectCurrencySymbol,
   selectCurrencyFactor,
   selectCrust,
-  selectSize
+  selectSize,
+  selectSubTotal,
+  updateCurrency,
+  selectCurrencyCode
 } from './pizzaSlice';
 import {
   Card, Button, CardDeck, CardGroup, Dropdown, FormControl,
-  Container, Col, Row, ButtonGroup, ListGroup, ListGroupItem
+  Container, Col, Row, ButtonGroup, ListGroup, ListGroupItem,
+  Form, Nav
 } from 'react-bootstrap';
 import { data } from './data';
 
+import { currencySelectStyle, selectStyle } from './styles';
 
 
 export function Menu() {
@@ -29,6 +34,8 @@ export function Menu() {
   const cart = useSelector(selectCart);
   const currencySymbol = useSelector(selectCurrencySymbol);
   const currencyFactor = useSelector(selectCurrencyFactor);
+  const subTotal = useSelector(selectSubTotal);
+  const currencyCode = useSelector(selectCurrencyCode);
   const dispatch = useDispatch();
   if (!loading) {
     dispatch(toggleLoading());
@@ -48,25 +55,7 @@ export function Menu() {
     });
   }
 
-  const selectStyle = {
-    control: base => ({
-      ...base,
-      border: 0,
-      padding: 0,
-      margin: 0,
-      marginTop: -11,
-      fontSize: 11,
-      borderBottom: '1px dotted grey',
-      // This line disable the blue border
-      boxShadow: "none"
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      border: 0,
-      fontSize: 10,
-      padding: 0,
-    }),
-  };
+
 
   const handleChange = (selectedOption) => {
     dispatch(selectCrust(selectedOption));
@@ -74,6 +63,10 @@ export function Menu() {
   const sizeHandleChange = (selectedOption) => {
     dispatch(selectSize(selectedOption));
   };
+
+  const handleCurrencyChange = (selectedOption) => {
+    dispatch(updateCurrency(selectedOption));
+  }
 
   return (
     <Container fluid>
@@ -90,28 +83,35 @@ export function Menu() {
                         <Card.Body>
                           <Card.Title style={{ textAlign: "left" }}>{item.name} </Card.Title>
                           <Card.Text style={{ textAlign: "left", fontSize: "12px", fontColor: "grey" }} >{item.description}</Card.Text>
-
                           <Row style={{ marginTop: "-20px" }}>
                             <Col>
-                              <label style={{ fontSize: "12px" }}><b>Select Crust</b></label>
-                              <Select
-                                styles={selectStyle}
-                                placeholder="select" align="left"
-                                defaultValue={{
-                                  label: item.crust[0].name
-                                  , value: item.crust[0].crustId
-                                }}
-                                onChange={(e) => handleChange({ ...e, item: item.id })}
-                                options={
-                                  item.crust.map(crust => {
-                                    return { label: crust.name, value: crust.crustId }
-                                  })
-                                }
-                              >
-                              </Select>
+                              <label style={{ fontSize: "12px" }}><b>Crust</b></label>
                             </Col>
                             <Col>
-                              <label style={{ fontSize: "12px" }}><b>Select Size</b></label>
+                              <label style={{ fontSize: "12px" }}><b>Size</b></label>
+                            </Col>
+                          </Row>
+                          <Row >
+                            <Col>
+                              <div style={{ width: '80px' }}>
+                                <Select
+                                  styles={selectStyle}
+                                  placeholder="select" align="left"
+                                  defaultValue={{
+                                    label: item.crust[0].name
+                                    , value: item.crust[0].crustId
+                                  }}
+                                  onChange={(e) => handleChange({ ...e, item: item.id })}
+                                  options={
+                                    item.crust.map(crust => {
+                                      return { label: crust.name, value: crust.crustId }
+                                    })
+                                  }
+                                >
+                                </Select>
+                              </div>
+                            </Col>
+                            <Col>
                               <Select
                                 styles={selectStyle}
                                 placeholder="select" align="left"
@@ -138,7 +138,7 @@ export function Menu() {
                           <Row>
                             <Col sm="5">
                               <div align="left" style={{ marginTop: "3px" }}>
-                                {(item.defaultPrice * currencyFactor) + currencySymbol}
+                                {currencySymbol + Math.round(item.defaultPrice * currencyFactor)}
                               </div>
                             </Col>
                             <Col sm="7">
@@ -166,9 +166,40 @@ export function Menu() {
 
           </CardDeck>
         </Col>
-        <Col sm={4} style={{ maxHeight: "400px" }} >
-          <Card style={{ width: '15rem', height: "100%" }} >
-            <ListGroup className="list-group-flush" style={{ paddingTop: "0px" }}>
+        <Col sm={4}  >
+          <Card style={{ width: '15rem', maxHeight: "450px" }} >
+            <Card.Header>
+              <Row>
+                <Col sm={8}>
+                  Change Currency
+                      </Col>
+                <Col sm={4}>
+                  <div style={{ width: '60px' }}>
+                    <Select align="right"
+                      styles={currencySelectStyle}
+                      placeholder="select"
+                      value={{
+                        label: currencyCode
+                        , value: currencyCode === "EUR" ? 1 : 1.08
+                      }}
+                      defaultValue={{
+                        label: "EUR"
+                        , value: 1
+                      }}
+                      onChange={handleCurrencyChange}
+                      options={
+                        [
+                          { label: "EUR", value: 1 },
+                          { label: "USD", value: 1.08 },
+                        ]
+                      }
+                    >
+                    </Select>
+                  </div>
+                </Col>
+              </Row>
+            </Card.Header>
+            <ListGroup className="list-group-flush" style={{ paddingTop: "0px", maxHeight: "400px", overflow: "scroll", overflowX: "hidden", overflowY: "auto" }}>
               {cart.length === 0 ?
                 <div align="center" style={{ paddingTop: "50px" }}>
                   <h6>YOUR CART IS EMPTY </h6>
@@ -179,7 +210,7 @@ export function Menu() {
                 cart.map(item => {
                   return (
                     <div key={item.id}>
-                      <ListGroupItem style={{ maxHeight: "300px" }}>
+                      <ListGroupItem >
                         <Row>
                           <Col sm={3}>
                             <Card.Img variant="left" src={`./img/${item.image}`} width="50px" height="50px" />
@@ -207,7 +238,7 @@ export function Menu() {
                           <Col sm={9} style={{ marginTop: "-3px" }}>
                             <div align="right" style={{ marginTop: "-5px" }}>
                               {cart.find(order => order.id === item.id) && cart.find(order => order.id === item.id).quantity > 0 ?
-                                (cart.find(order => order.id === item.id).quantity * cart.find(order => order.id === item.id).defaultPrice * currencyFactor) + currencySymbol : ""
+                                currencySymbol + Math.round(cart.find(order => order.id === item.id).quantity * cart.find(order => order.id === item.id).defaultPrice * currencyFactor) : ""
                               }
                             </div>
                           </Col>
@@ -218,7 +249,22 @@ export function Menu() {
                 })
               }
             </ListGroup>
+            {
+              cart.length > 0 ?
+                <Card.Body>
+                  <Card.Title>
+                    <Row>
+                      <Col align="left" sm={7}>
+                        Sub Total
+                      </Col>
+                      <Col align="right" sm={5}>
+                        {currencySymbol + Math.round(subTotal * currencyFactor)}
+                      </Col>
+                    </Row>
 
+                  </Card.Title>
+                </Card.Body> : ""
+            }
           </Card>
 
         </Col >
