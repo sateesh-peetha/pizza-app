@@ -75,7 +75,7 @@ export function Menu() {
       <Row>
         <Col sm={8}>
           <CardDeck style={{ display: "flex" }}> {
-            data.map(item => {
+            menu.map(item => {
               return (
                 <Row class={"row equal"} style={{ paddingBottom: "5px" }}>
                   <Col>

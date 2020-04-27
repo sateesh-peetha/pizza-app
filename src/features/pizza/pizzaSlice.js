@@ -14,11 +14,14 @@ export const pizzaSlice = createSlice({
   reducers: {
     add: (state, action) => {
       const item = state.menu.filter(item => item.id === action.payload)
+      let crustIndex = item[0].crust.findIndex(ele => ele.crustId === item[0].selectedCrustId)
+      if (crustIndex === -1)
+        crustIndex = 0;
       state.cart.push({
-        ...item[0], quantity: 1, defaultPrice: item[0].crust[0].sizes[0].price
-        , price: item[0].crust[0].sizes[0].price
-        , crustName : item[0].crust[0].name
-        , crustSize : item[0].crust[0].sizes[0].name
+        ...item[0], quantity: 1, defaultPrice: item[0].crust[crustIndex].sizes[0].price
+        , price: item[0].crust[crustIndex].sizes[0].price
+        , crustName: item[0].crust[crustIndex].name
+        , crustSize: item[0].crust[crustIndex].sizes[0].name
       });
 
     },
@@ -54,12 +57,12 @@ export const pizzaSlice = createSlice({
         defaultPrice: state.menu[menuId].crust[crustIndex].sizes[0].price,
       };
       if (cartId !== -1) {
-       // crustIndex = state.cart[cartId].crust.findIndex(ele => ele.crustId === action.payload.value)
+        // crustIndex = state.cart[cartId].crust.findIndex(ele => ele.crustId === action.payload.value)
         state.cart[cartId] = {
           ...state.cart[cartId], selectedCrustId: action.payload.value,
           crustName: action.payload.label,
           defaultPrice: state.menu[menuId].crust[crustIndex].sizes[0].price,
-          crustSize : state.menu[menuId].crust[crustIndex].sizes[0].name
+          crustSize: state.menu[menuId].crust[crustIndex].sizes[0].name
         };
       }
     }
