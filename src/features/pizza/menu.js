@@ -116,8 +116,10 @@ export function Menu() {
                                 styles={selectStyle}
                                 placeholder="select" align="left"
                                 value={{
-                                  label: item.crust[item.selectedCrustIndex || 0].sizes[0].name
-                                  , value: 0
+                                  label: item.crustSize || item.crust[item.selectedCrustIndex || 0].sizes[0].name
+                                  , value: item.crust[item.selectedCrustIndex] ?
+                                    item.crust[item.selectedCrustIndex].sizes.findIndex(ele => ele.name === item.crustSize)
+                                    : 0
                                 }}
                                 defaultValue={{
                                   label: item.crust[item.selectedCrustIndex || 0].sizes[0].name

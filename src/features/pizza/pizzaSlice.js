@@ -86,7 +86,6 @@ export const pizzaSlice = createSlice({
         defaultPrice: state.menu[menuId].crust[crustIndex].sizes[0].price,
       };
 
-
       if (cartId !== -1) {
         // crustIndex = state.cart[cartId].crust.findIndex(ele => ele.crustId === action.payload.value)
         state.cart[cartId] = {
@@ -112,6 +111,7 @@ export const pizzaSlice = createSlice({
       state.menu[menuId] = {
         ...state.menu[menuId],
         defaultPrice: state.menu[menuId].crust[selectedCrustIndex].sizes[action.payload.value].price,
+        crustSize: state.menu[menuId].crust[selectedCrustIndex].sizes[action.payload.value].name
       };
       if (cartId !== -1) {
         // crustIndex = state.cart[cartId].crust.findIndex(ele => ele.crustId === action.payload.value)
