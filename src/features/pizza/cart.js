@@ -133,35 +133,35 @@ const Cart = () => {
                         <Form.Row>
                             <Form.Group as={Col} controlId="firstName">
                                 <Form.Label size="sm">First Name</Form.Label>
-                                <Form.Control size="sm" type="text"
+                                <Form.Control size="sm" type="text" required
                                     placeholder="Enter First Name" />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="lastName">
                                 <Form.Label size="sm">Password</Form.Label>
-                                <Form.Control type="text" size="sm" placeholder="Enter Second Name" />
+                                <Form.Control type="text" size="sm" placeholder="Enter Second Name" required/>
                             </Form.Group>
                         </Form.Row>
 
                         <Form.Group controlId="phoneNo">
                             <Form.Label size="sm">Phone No</Form.Label>
-                            <Form.Control size="sm" placeholder="999888777" />
+                            <Form.Control size="sm" placeholder="999888777" required />
                         </Form.Group>
 
                         <Form.Group controlId="address1">
                             <Form.Label size="sm">Address</Form.Label>
-                            <Form.Control size="sm" placeholder="1234 Main St" />
+                            <Form.Control size="sm" placeholder="1234 Main St" required />
                         </Form.Group>
 
                         <Form.Group controlId="address2">
                             <Form.Label size="sm">Address 2</Form.Label>
-                            <Form.Control size="sm" placeholder="Apartment, studio, or floor" />
+                            <Form.Control size="sm" placeholder="Apartment, studio, or floor" required />
                         </Form.Group>
 
                         <Form.Row>
                             <Form.Group as={Col} controlId="city">
                                 <Form.Label size="sm">City</Form.Label>
-                                <Form.Control size="sm" />
+                                <Form.Control size="sm" required />
                             </Form.Group>
 
                             <Form.Group as={Col} size="sm" controlId="state">
@@ -171,7 +171,7 @@ const Cart = () => {
 
                             <Form.Group as={Col} controlId="zip">
                                 <Form.Label size="sm">Zip</Form.Label>
-                                <Form.Control size="sm" />
+                                <Form.Control size="sm" required/>
                             </Form.Group>
                         </Form.Row>
 
