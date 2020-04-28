@@ -23,7 +23,7 @@ import {
   Container, Col, Row, ButtonGroup, ListGroup, ListGroupItem,
   Form, Nav
 } from 'react-bootstrap';
-
+import { data } from './data';
 import { currencySelectStyle, selectStyle } from './styles';
 
 
@@ -38,10 +38,12 @@ export function Menu() {
   const dispatch = useDispatch();
   if (!loading) {
     dispatch(toggleLoading());
+    dispatch(setProducts(data))
     const apiResponse = fetch("https://wuk2cfdbo8.execute-api.eu-central-1.amazonaws.com/v1/get-menu").then(
       function (response) {
         if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' +
+          dispatch(setProducts(data))
+          console.log('Looks like there was a problem. Status Code: Loading with offline data ' +
             response.status);
           return;
         }
