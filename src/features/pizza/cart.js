@@ -21,7 +21,7 @@ import {
 import {
     Card, Button, CardDeck, CardGroup, Dropdown, FormControl,
     Container, Col, Row, ButtonGroup, ListGroup, ListGroupItem,
-    Form, Nav
+    Form, Nav, Modal
 } from 'react-bootstrap';
 
 import { currencySelectStyle, selectStyle } from './styles';
@@ -36,7 +36,7 @@ export function Cart() {
     const subTotal = useSelector(selectSubTotal);
     const currencyCode = useSelector(selectCurrencyCode);
     const dispatch = useDispatch();
-
+    const [modalShow, setModalShow] = React.useState(false);
     const handleChange = (selectedOption) => {
         dispatch(selectCrust(selectedOption));
     };
@@ -48,8 +48,91 @@ export function Cart() {
         dispatch(updateCurrency(selectedOption));
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const formData = {};
+        for (const field in this.refs) {
+            formData[field] = this.refs[field].value;
+        }
+        console.log('-->', formData);
+        setModalShow(false);
+    }
+
+    const Order = (props) => {
+        return (
+            <Modal
+                {...props}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Complete Delivery Details
+              </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Row>
+                            <Form.Group as={Col} >
+                                <Form.Label size="sm">First Name</Form.Label>
+                                <Form.Control size="sm" type="text" name="firstName" placeholder="Enter First Name" />
+                            </Form.Group>
+
+                            <Form.Group as={Col} >
+                                <Form.Label size="sm">Password</Form.Label>
+                                <Form.Control type="text" size="sm" placeholder="Enter Second Name" />
+                            </Form.Group>
+                        </Form.Row>
+
+                        <Form.Group >
+                            <Form.Label size="sm">Phone No</Form.Label>
+                            <Form.Control size="sm" placeholder="999888777" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formGridAddress1">
+                            <Form.Label size="sm">Address</Form.Label>
+                            <Form.Control size="sm" placeholder="1234 Main St" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formGridAddress2">
+                            <Form.Label size="sm">Address 2</Form.Label>
+                            <Form.Control size="sm" placeholder="Apartment, studio, or floor" />
+                        </Form.Group>
+
+                        <Form.Row>
+                            <Form.Group as={Col} controlId="formGridCity">
+                                <Form.Label size="sm">City</Form.Label>
+                                <Form.Control size="sm"/>
+                            </Form.Group>
+
+                            <Form.Group as={Col} size="sm" controlId="formGridState">
+                                <Form.Label size="sm">State </Form.Label>
+                                <Form.Control size="sm" />
+                            </Form.Group>
+
+                            <Form.Group as={Col} controlId="formGridZip">
+                                <Form.Label size="sm">Zip</Form.Label>
+                                <Form.Control size="sm"/>
+                            </Form.Group>
+                        </Form.Row>
+
+
+                        <Button variant="primary" type="submit" >
+                            Proceed With Order
+  </Button>
+                    </Form>
+                </Modal.Body>
+            </Modal>
+        );
+    }
+
     return (
         <Container fluid>
+            <Order
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
             <Row>
                 <Col sm={8}  >
                     <Card style={{ width: '50rem', maxHeight: "750px" }} >
@@ -112,7 +195,7 @@ export function Cart() {
 
                 </Col >
                 <Col sm={4}>
-                    { cart.length > 0 ?
+                    {cart.length > 0 ?
                         <Col sm={4}>
 
                             <Card style={{ width: '15rem', maxHeight: "450px", marginLeft: "15px" }} >
@@ -185,7 +268,7 @@ export function Cart() {
 
                                             </Card.Title>
                                             <Card.Title>
-                                                <Button variant="light" block>
+                                                <Button variant="light" block onClick={() => setModalShow(true)}>
                                                     Place Order
                                             </Button>
 
@@ -195,8 +278,8 @@ export function Cart() {
                             </Card>
 
                         </Col >
-                     : ""    
-                }
+                        : ""
+                    }
                 </Col>
             </Row >
         </Container >
