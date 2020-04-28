@@ -25,6 +25,7 @@ import {
 } from 'react-bootstrap';
 
 import { currencySelectStyle, selectStyle } from './styles';
+import { Trash } from 'react-bootstrap-icons';
 
 export function Cart() {
     const loading = useSelector(selectLoading);
@@ -88,7 +89,7 @@ export function Cart() {
                                                             <div align="right" style={{ marginTop: "20px" }}>
                                                                 {cart.find(order => order.id === item.id) && cart.find(order => order.id === item.id).quantity > 0 ?
                                                                     <ButtonGroup aria-label="Quantity" >
-                                                                        <Button size="lg" variant="light" onClick={() => dispatch(decreaseQuantity(item.id))}>-</Button>
+                                                                        <Button size="lg" variant="light" onClick={() => dispatch(decreaseQuantity(item.id))}>{cart.find(order => order.id === item.id).quantity === 1 ? <Trash color="red"></Trash> : "-"}</Button>
                                                                         <Button size="lg" disabled variant="light">{cart.find(order => order.id === item.id).quantity}</Button>
                                                                         <Button size="lg" variant="light" onClick={() => dispatch(increaseQuantity(item.id))}>+</Button>
                                                                     </ButtonGroup>

@@ -25,7 +25,7 @@ import {
 } from 'react-bootstrap';
 import { data } from './data';
 import { currencySelectStyle, selectStyle } from './styles';
-
+import { Trash } from 'react-bootstrap-icons';
 
 export function Menu() {
   const loading = useSelector(selectLoading);
@@ -148,7 +148,7 @@ export function Menu() {
                               <div align="right">
                                 {cart.find(order => order.id === item.id) && cart.find(order => order.id === item.id).quantity > 0 ?
                                   <ButtonGroup aria-label="Basic example" >
-                                    <Button size="sm" variant="link" onClick={() => dispatch(decreaseQuantity(item.id))}>-</Button>
+                                    <Button size="sm" variant="link" onClick={() => dispatch(decreaseQuantity(item.id))}> {cart.find(order => order.id === item.id).quantity === 1 ? <Trash color="red"></Trash> : "-"}</Button>
                                     <Button size="sm" disabled variant="light">{cart.find(order => order.id === item.id).quantity}</Button>
                                     <Button size="sm" variant="link" onClick={() => dispatch(increaseQuantity(item.id))}>+</Button>
                                   </ButtonGroup>
@@ -229,7 +229,7 @@ export function Menu() {
                             <div align="left" style={{ marginTop: "-10px" }}>
                               {cart.find(order => order.id === item.id) && cart.find(order => order.id === item.id).quantity > 0 ?
                                 <ButtonGroup aria-label="Quantity" >
-                                  <Button size="sm" variant="link" onClick={() => dispatch(decreaseQuantity(item.id))}>-</Button>
+                                  <Button size="sm" variant="link" onClick={() => dispatch(decreaseQuantity(item.id))}>{cart.find(order => order.id === item.id).quantity === 1 ? <Trash color="red"></Trash> : "-"}</Button>
                                   <Button size="sm" disabled variant="light">{cart.find(order => order.id === item.id).quantity}</Button>
                                   <Button size="sm" variant="link" onClick={() => dispatch(increaseQuantity(item.id))}>+</Button>
                                 </ButtonGroup>
