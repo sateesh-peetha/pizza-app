@@ -16,7 +16,7 @@ export
             ...provided,
             border: 0,
             fontSize: 8,
-            padding: 0,
+            padding: 5,
         }),
     };
 
@@ -38,6 +38,6 @@ export
             ...provided,
             border: 0,
             fontSize: 12,
-            padding: 0,
+            padding: 10,
         }),
     };  

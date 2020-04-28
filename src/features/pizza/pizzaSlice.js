@@ -84,6 +84,7 @@ export const pizzaSlice = createSlice({
         ...state.menu[menuId], selectedCrustId: action.payload.value,
         selectedCrustIndex: crustIndex,
         defaultPrice: state.menu[menuId].crust[crustIndex].sizes[0].price,
+        crustSize: state.menu[menuId].crust[crustIndex].sizes[0].name
       };
 
       if (cartId !== -1) {
@@ -126,7 +127,7 @@ export const pizzaSlice = createSlice({
 });
 
 export const { add, setProducts, toggleLoading, increaseQuantity, decreaseQuantity
-  , selectCrust, selectSize ,updateCurrency} = pizzaSlice.actions;
+  , selectCrust, selectSize, updateCurrency } = pizzaSlice.actions;
 export const selectLoading = state => state.pizza.loading;
 export const selectMenu = state => state.pizza.menu;
 export const selectCart = state => state.pizza.cart;
