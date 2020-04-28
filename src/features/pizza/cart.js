@@ -138,7 +138,7 @@ const Cart = () => {
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="lastName">
-                                <Form.Label size="sm">Password</Form.Label>
+                                <Form.Label size="sm">Second Name</Form.Label>
                                 <Form.Control type="text" size="sm" placeholder="Enter Second Name" required/>
                             </Form.Group>
                         </Form.Row>
