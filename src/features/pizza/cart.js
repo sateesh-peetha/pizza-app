@@ -25,7 +25,7 @@ import {
 import {
     Card, Button, CardDeck, CardGroup, Dropdown, FormControl,
     Container, Col, Row, ButtonGroup, ListGroup, ListGroupItem,
-    Form, Nav, Modal
+    Form, Nav, Modal, Alert
 } from 'react-bootstrap';
 
 import { currencySelectStyle, selectStyle } from './styles';
@@ -41,6 +41,7 @@ export function Cart() {
     const currencyCode = useSelector(selectCurrencyCode);
     const customerDetails = useSelector(selectCustomerDetails);
     const showCustomerDetails = useSelector(selectShowCustomerDetails);
+    const [show, setShow] = useState(false);
     const dispatch = useDispatch();
     const handleChange = (selectedOption) => {
         dispatch(selectCrust(selectedOption));
@@ -53,7 +54,7 @@ export function Cart() {
         dispatch(updateCurrency(selectedOption));
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const form = event.target.elements;
         const customerDetails = {
@@ -73,6 +74,37 @@ export function Cart() {
             orderDetails: cart,
             orderCurrencyCode: currencyCode
         };
+        const orderRequest = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(order)
+        };
+        try {
+            const results = await fetch('https://wuk2cfdbo8.execute-api.eu-central-1.amazonaws.com/v1/create-order', orderRequest);
+            if (results.ok) {
+                setShow(true)
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    const OrderStatus = (props) => {
+        if (show) {
+            return (
+                <Alert variant="success" onClose={() => setShow(false)} dismissible>
+                    <Alert.Heading>Order Confirmed!</Alert.Heading>
+                    <p>
+                        Happy Eating! Please comeback.
+                </p>
+                </Alert>
+            )
+        }
+        else
+            return (<div></div>);
     }
 
     const Order = (props) => {
@@ -147,6 +179,7 @@ export function Cart() {
 
     return (
         <Container fluid>
+            <OrderStatus />
             <Order
                 show={showCustomerDetails}
                 onHide={() => dispatch(toggleModalBox({ name: "showCustomerDetails" }))}
