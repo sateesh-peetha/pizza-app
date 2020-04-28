@@ -21,7 +21,7 @@ import {
 import {
   Card, Button, CardDeck, CardGroup, Dropdown, FormControl,
   Container, Col, Row, ButtonGroup, ListGroup, ListGroupItem,
-  Form, Nav , Modal
+  Form, Nav, Modal
 } from 'react-bootstrap';
 import { data } from './data';
 import { currencySelectStyle, selectStyle } from './styles';
@@ -296,9 +296,11 @@ export function Menu() {
 
                   </Card.Title>
                   <Card.Title>
-                    <Button variant="light" block>
-                      <a href="#/cart">Checkout</a>
+                    <a href="#/cart">
+                      <Button variant="light" block>
+                        Checkout
                     </Button>
+                    </a>
 
 
                   </Card.Title>
