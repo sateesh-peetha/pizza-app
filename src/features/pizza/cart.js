@@ -27,7 +27,7 @@ import {
 import {
     Card, Button, CardDeck, CardGroup, Dropdown, FormControl,
     Container, Col, Row, ButtonGroup, ListGroup, ListGroupItem,
-    Form, Nav, Modal, Alert
+    Form, Nav, Modal, Alert, Spinner
 } from 'react-bootstrap';
 
 import { currencySelectStyle, selectStyle } from './styles';
@@ -45,6 +45,7 @@ const Cart = () => {
     const showCustomerDetails = useSelector(selectShowCustomerDetails);
     const [show, setShow] = useState(false);
     const [redirect, setRedirect] = useState(false);
+    const [orderProcessing, setOrderProcessing] = useState(false);
     const dispatch = useDispatch();
     const handleChange = (selectedOption) => {
         dispatch(selectCrust(selectedOption));
@@ -59,6 +60,7 @@ const Cart = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setOrderProcessing(true);
         const form = event.target.elements;
         const customerDetails = {
             firstName: form.firstName.value || " ",
@@ -90,6 +92,7 @@ const Cart = () => {
             if (results.ok) {
                 setShow(true);
                 dispatch(emptyCart());
+                setOrderProcessing(false);
             }
         }
         catch (err) {
@@ -112,7 +115,6 @@ const Cart = () => {
             return <div></div>
         }
     }
-
     const Order = (props) => {
         return (
             <Modal
@@ -185,7 +187,15 @@ const Cart = () => {
 
     return (
         <Container fluid>
-            {cart.length===0 && redirect ? <Redirect to='/menu' /> : " "}
+            {orderProcessing ?
+                <div align="center" style={{ fontSize: "18px" }}>
+                    <Spinner animation="border" role="status">
+                        <span className="sr-only">Processing...</span>
+                    </Spinner>
+                    <p>Please whait while we are processing order..</p>
+                </div> : " "}
+
+            {cart.length === 0 && redirect ? <Redirect to='/menu' /> : " "}
             <OrderStatus />
             <Order
                 show={showCustomerDetails}
