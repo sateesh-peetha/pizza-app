@@ -254,7 +254,7 @@ export function Menu() {
                           </Col>
                         </Row>
                         <Row>
-                          <Col sm={3}>
+                          <Col sm={5}>
                             <div align="left" style={{ marginTop: "-10px" }}>
                               {cart.find(order => order.id === item.id) && cart.find(order => order.id === item.id).quantity > 0 ?
                                 <ButtonGroup aria-label="Quantity" >
@@ -267,7 +267,7 @@ export function Menu() {
                               }
                             </div>
                           </Col>
-                          <Col sm={9} style={{ marginTop: "-3px" }}>
+                          <Col sm={7} style={{ marginTop: "-3px" }}>
                             <div align="right" style={{ marginTop: "-5px" }}>
                               {cart.find(order => order.id === item.id) && cart.find(order => order.id === item.id).quantity > 0 ?
                                 currencySymbol + Math.round(cart.find(order => order.id === item.id).quantity * cart.find(order => order.id === item.id).defaultPrice * currencyFactor) : ""
