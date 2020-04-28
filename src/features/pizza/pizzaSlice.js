@@ -40,6 +40,9 @@ export const pizzaSlice = createSlice({
       state.subTotal = state.subTotal + item[0].crust[crustIndex].sizes[0].price;
 
     },
+    emptyCart : (state) => {
+      state.cart = [];
+    },
     setProducts: (state, action) => {
       state.menu = action.payload;
       state.loading = true;
@@ -143,7 +146,7 @@ export const pizzaSlice = createSlice({
   },
 });
 
-export const { add, setProducts, toggleLoading, increaseQuantity, decreaseQuantity
+export const { add, setProducts, toggleLoading, increaseQuantity, decreaseQuantity,emptyCart
   , selectCrust, selectSize, updateCurrency ,updateCustomerDetails,toggleModalBox} = pizzaSlice.actions;
 export const selectLoading = state => state.pizza.loading;
 export const selectMenu = state => state.pizza.menu;

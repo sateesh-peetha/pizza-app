@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { withRouter, Redirect } from "react-router-dom"
 import Select from "react-select";
 import {
     add,
@@ -20,7 +21,8 @@ import {
     updateCustomerDetails,
     selectCustomerDetails,
     selectShowCustomerDetails,
-    toggleModalBox
+    toggleModalBox,
+    emptyCart
 } from './pizzaSlice';
 import {
     Card, Button, CardDeck, CardGroup, Dropdown, FormControl,
@@ -31,7 +33,7 @@ import {
 import { currencySelectStyle, selectStyle } from './styles';
 import { Trash } from 'react-bootstrap-icons';
 
-export function Cart() {
+const Cart = () => {
     const loading = useSelector(selectLoading);
     const menu = useSelector(selectMenu);
     const cart = useSelector(selectCart);
@@ -42,6 +44,7 @@ export function Cart() {
     const customerDetails = useSelector(selectCustomerDetails);
     const showCustomerDetails = useSelector(selectShowCustomerDetails);
     const [show, setShow] = useState(false);
+    const [redirect, setRedirect] = useState(false);
     const dispatch = useDispatch();
     const handleChange = (selectedOption) => {
         dispatch(selectCrust(selectedOption));
@@ -58,15 +61,16 @@ export function Cart() {
         event.preventDefault();
         const form = event.target.elements;
         const customerDetails = {
-            firstName: form.firstName.value,
-            secondName: form.lastName.value,
-            phone: form.phoneNo.value,
-            address1: form.address1.value,
-            address2: form.address2.value,
-            city: form.city.value,
-            state: form.state.value,
-            zip: form.zip.value
+            firstName: form.firstName.value || " ",
+            secondName: form.lastName.value || " ",
+            phone: form.phoneNo.value || " ",
+            address1: form.address1.value || " ",
+            address2: form.address2.value || " ",
+            city: form.city.value || " ",
+            state: form.state.value || " ",
+            zip: form.zip.value || " "
         }
+
         dispatch(updateCustomerDetails(customerDetails));
         dispatch(toggleModalBox({ name: "showCustomerDetails" }));
         const order = {
@@ -84,7 +88,8 @@ export function Cart() {
         try {
             const results = await fetch('https://wuk2cfdbo8.execute-api.eu-central-1.amazonaws.com/v1/create-order', orderRequest);
             if (results.ok) {
-                setShow(true)
+                setShow(true);
+                dispatch(emptyCart());
             }
         }
         catch (err) {
@@ -95,7 +100,7 @@ export function Cart() {
     const OrderStatus = (props) => {
         if (show) {
             return (
-                <Alert variant="success" onClose={() => setShow(false)} dismissible>
+                <Alert variant="success" onClose={() => setRedirect(true)} dismissible>
                     <Alert.Heading>Order Confirmed!</Alert.Heading>
                     <p>
                         Happy Eating! Please comeback.
@@ -103,8 +108,9 @@ export function Cart() {
                 </Alert>
             )
         }
-        else
-            return (<div></div>);
+        else {
+            return <div></div>
+        }
     }
 
     const Order = (props) => {
@@ -179,6 +185,7 @@ export function Cart() {
 
     return (
         <Container fluid>
+            {cart.length===0 && redirect ? <Redirect to='/menu' /> : " "}
             <OrderStatus />
             <Order
                 show={showCustomerDetails}
@@ -336,3 +343,5 @@ export function Cart() {
         </Container >
     );
 }
+
+export default withRouter(Cart);

@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch, HashRouter } from "react-router-dom"
 import logo from './logo.svg';
 import { Menu } from './features/pizza/menu.js';
-import { Cart } from './features/pizza/cart.js';
+import Cart from './features/pizza/cart.js';
 import './App.css';
 import { Navbar, Nav } from 'react-bootstrap';
 
