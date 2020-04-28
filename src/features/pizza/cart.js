@@ -16,7 +16,11 @@ import {
     selectSize,
     selectSubTotal,
     updateCurrency,
-    selectCurrencyCode
+    selectCurrencyCode,
+    updateCustomerDetails,
+    selectCustomerDetails,
+    selectShowCustomerDetails,
+    toggleModalBox
 } from './pizzaSlice';
 import {
     Card, Button, CardDeck, CardGroup, Dropdown, FormControl,
@@ -35,8 +39,9 @@ export function Cart() {
     const currencyFactor = useSelector(selectCurrencyFactor);
     const subTotal = useSelector(selectSubTotal);
     const currencyCode = useSelector(selectCurrencyCode);
+    const customerDetails = useSelector(selectCustomerDetails);
+    const showCustomerDetails = useSelector(selectShowCustomerDetails);
     const dispatch = useDispatch();
-    const [modalShow, setModalShow] = React.useState(false);
     const handleChange = (selectedOption) => {
         dispatch(selectCrust(selectedOption));
     };
@@ -50,12 +55,24 @@ export function Cart() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const formData = {};
-        for (const field in this.refs) {
-            formData[field] = this.refs[field].value;
+        const form = event.target.elements;
+        const customerDetails = {
+            firstName: form.firstName.value,
+            secondName: form.lastName.value,
+            phone: form.phoneNo.value,
+            address1: form.address1.value,
+            address2: form.address2.value,
+            city: form.city.value,
+            state: form.state.value,
+            zip: form.zip.value
         }
-        console.log('-->', formData);
-        setModalShow(false);
+        dispatch(updateCustomerDetails(customerDetails));
+        dispatch(toggleModalBox({ name: "showCustomerDetails" }));
+        const order = {
+            customerDetails: customerDetails,
+            orderDetails: cart,
+            orderCurrencyCode: currencyCode
+        };
     }
 
     const Order = (props) => {
@@ -74,46 +91,47 @@ export function Cart() {
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
                         <Form.Row>
-                            <Form.Group as={Col} >
+                            <Form.Group as={Col} controlId="firstName">
                                 <Form.Label size="sm">First Name</Form.Label>
-                                <Form.Control size="sm" type="text" name="firstName" placeholder="Enter First Name" />
+                                <Form.Control size="sm" type="text"
+                                    placeholder="Enter First Name" />
                             </Form.Group>
 
-                            <Form.Group as={Col} >
+                            <Form.Group as={Col} controlId="lastName">
                                 <Form.Label size="sm">Password</Form.Label>
                                 <Form.Control type="text" size="sm" placeholder="Enter Second Name" />
                             </Form.Group>
                         </Form.Row>
 
-                        <Form.Group >
+                        <Form.Group controlId="phoneNo">
                             <Form.Label size="sm">Phone No</Form.Label>
                             <Form.Control size="sm" placeholder="999888777" />
                         </Form.Group>
 
-                        <Form.Group controlId="formGridAddress1">
+                        <Form.Group controlId="address1">
                             <Form.Label size="sm">Address</Form.Label>
                             <Form.Control size="sm" placeholder="1234 Main St" />
                         </Form.Group>
 
-                        <Form.Group controlId="formGridAddress2">
+                        <Form.Group controlId="address2">
                             <Form.Label size="sm">Address 2</Form.Label>
                             <Form.Control size="sm" placeholder="Apartment, studio, or floor" />
                         </Form.Group>
 
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridCity">
+                            <Form.Group as={Col} controlId="city">
                                 <Form.Label size="sm">City</Form.Label>
-                                <Form.Control size="sm"/>
+                                <Form.Control size="sm" />
                             </Form.Group>
 
-                            <Form.Group as={Col} size="sm" controlId="formGridState">
+                            <Form.Group as={Col} size="sm" controlId="state">
                                 <Form.Label size="sm">State </Form.Label>
                                 <Form.Control size="sm" />
                             </Form.Group>
 
-                            <Form.Group as={Col} controlId="formGridZip">
+                            <Form.Group as={Col} controlId="zip">
                                 <Form.Label size="sm">Zip</Form.Label>
-                                <Form.Control size="sm"/>
+                                <Form.Control size="sm" />
                             </Form.Group>
                         </Form.Row>
 
@@ -130,8 +148,8 @@ export function Cart() {
     return (
         <Container fluid>
             <Order
-                show={modalShow}
-                onHide={() => setModalShow(false)}
+                show={showCustomerDetails}
+                onHide={() => dispatch(toggleModalBox({ name: "showCustomerDetails" }))}
             />
             <Row>
                 <Col sm={8}  >
@@ -268,7 +286,7 @@ export function Cart() {
 
                                             </Card.Title>
                                             <Card.Title>
-                                                <Button variant="light" block onClick={() => setModalShow(true)}>
+                                                <Button variant="light" block onClick={() => dispatch(toggleModalBox({ name: "showCustomerDetails" }))}>
                                                     Place Order
                                             </Button>
 

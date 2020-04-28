@@ -10,7 +10,18 @@ export const pizzaSlice = createSlice({
     currencyCode: "EUR",
     currencySymbol: "€",
     currencyFactor: 1,
-    subTotal: 0
+    subTotal: 0,
+    showCustomerDetails : false,
+    customerDetails : {
+      firstName : "",
+      secondName : "",
+      phone : "",
+      address1 : "",
+      address2 : "",
+      city :"",
+      state : "",
+      zip :""
+    }
   },
   reducers: {
     add: (state, action) => {
@@ -32,6 +43,12 @@ export const pizzaSlice = createSlice({
     setProducts: (state, action) => {
       state.menu = action.payload;
       state.loading = true;
+    },
+    toggleModalBox : (state,action) => {
+      state[action.payload.name] = !state[action.payload.name];
+    },
+    updateCustomerDetails : (state,action) => {
+      state.customerDetails = action.payload;
     },
     toggleLoading: (state) => {
       state.loading = !state.loading
@@ -127,7 +144,7 @@ export const pizzaSlice = createSlice({
 });
 
 export const { add, setProducts, toggleLoading, increaseQuantity, decreaseQuantity
-  , selectCrust, selectSize, updateCurrency } = pizzaSlice.actions;
+  , selectCrust, selectSize, updateCurrency ,updateCustomerDetails,toggleModalBox} = pizzaSlice.actions;
 export const selectLoading = state => state.pizza.loading;
 export const selectMenu = state => state.pizza.menu;
 export const selectCart = state => state.pizza.cart;
@@ -135,4 +152,6 @@ export const selectCurrencySymbol = state => state.pizza.currencySymbol;
 export const selectCurrencyFactor = state => state.pizza.currencyFactor;
 export const selectSubTotal = state => state.pizza.subTotal;
 export const selectCurrencyCode = state => state.pizza.currencyCode;
+export const selectCustomerDetails = state => state.pizza.customerDetails;
+export const selectShowCustomerDetails = state => state.pizza.showCustomerDetails; 
 export default pizzaSlice.reducer;
