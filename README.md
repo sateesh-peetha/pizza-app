@@ -3,6 +3,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Pizza Delivery App using React and Redux toolkit.
 there are two main functional components. One is to display menu and another is to test cart.
 
+## Live Demo
+http://pizza-sateesh.s3-website.eu-central-1.amazonaws.com/#/menu
+
 ## Pending
 #### adding test scripts
 #### adding user registration, protected routes
