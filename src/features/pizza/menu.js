@@ -199,7 +199,7 @@ export function Menu() {
           </CardDeck>
         </Col>
         <Col sm={4}  >
-          <Card style={{ width: '17rem', maxHeight: "450px" }} >
+          <Card style={{ width: '19rem', maxHeight: "450px" }} >
             <Card.Header>
               <Row>
                 <Col sm={8}>
